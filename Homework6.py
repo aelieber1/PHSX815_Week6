@@ -68,10 +68,16 @@ if __name__ == "__main__":
     analyt_int = upper_calc - lower_calc 
 
     print('Analytical Calculation of Integral of 4xe^-x from x=1 to x=10: ', analyt_int)
+    
+    # error calculation
+    result, error = spi.quad(f, a, b) # I initially did the integral analytically with this method, which calculated the error. I am not sure if this the right way to get the error or not though. 
 
     # plot function
     x = np.linspace(0, 11, 100)
     plt.plot(x, f(x), color='red')
+    plt.title("Plot of Function 4xe^-x from x=1 to x=10")
+    plt.xlabel('x')
+    plt.ylabel('f(x)')
     plt.show()
 
 
@@ -115,3 +121,16 @@ if __name__ == "__main__":
     
     print("Percent difference between romb and correct integral: ", percent(result_romb, analyt_int), "%")
     print("Percent difference between gaus quad and correct integral: ", percent(result_gaus, analyt_int), "%")
+    print()
+    print('Analytical error is  is ', error)
+    print('Difference between the two numerical methods is: ', numerical_difference)
+    print('The percent difference between the analytical error and difference in numerical methods is: ', percent(numerical_difference, error), "%")
+    print()
+    print("No, the difference between the two estimates is not a good indicator of the actual error")
+    
+    # within the method of how I calculated the integrals, I could not find how to implement a user inputted number of sub intervals or evaluation points. I've asked Dr. Rogan, but those changes will not be reflected here until after the homework deadline. 
+    
+    
+    
+    
+#_____________________________________________________________________________________________________________________

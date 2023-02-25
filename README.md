@@ -12,3 +12,6 @@
 The python file `Homework6.py`can be run from the command line by typing:
 
 	<> python3 Homework6.py -Nint [Number of Sub-Intervals] -upper [upper limit of integration] -lower [lower limit of integration] 
+    
+    
+For running purposes, the Jupyter file `Homework6_functiontesting.py` can be disregarded.

@@ -72,7 +72,7 @@ if __name__ == "__main__":
     # plot function
     x = np.linspace(0, 11, 100)
     plt.plot(x, f(x), color='red')
-    #plt.show()
+    plt.show()
 
 
     """

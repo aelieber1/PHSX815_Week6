@@ -26,8 +26,10 @@ if __name__ == "__main__":
     if '-h' in sys.argv or '--help' in sys.argv:
         print ("Usage: %s [-seed number]" % sys.argv[0])
         print (" -Nint: [integer # of sub intervals]")
-        print (" -upper: [upper limit of integration]")
-        print (" -lower: [lower limit of integration]")
+        print (" -upperx: [upper x limit of integration]")
+        print (" -lowerx: [lower x limit of integration]")
+        print (" -uppery: [upper y limit of integration]")
+        print (" -lowery: [lower y limit of integration]")
         sys.exit(1)
 
     # default lower bound for x

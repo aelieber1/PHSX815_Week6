@@ -1,5 +1,6 @@
 """
 Purpose: Homework #7 PHSX 815
+Attempt with 2 Dimensional Function
 University of Kansas
 
 author: @aelieber1  
@@ -29,11 +30,17 @@ if __name__ == "__main__":
         print (" -lower: [lower limit of integration]")
         sys.exit(1)
 
-    # default lower bound
+    # default lower bound for x
     a = 0
     
-    # default upper bound
+    # default upper bound for x
     b = 10
+    
+    # default lower bound for y
+    c = 0
+    
+    # default upper bound for y 
+    d = 10
     
     # default number of sub intervals
     Nint = 1000
@@ -42,62 +49,57 @@ if __name__ == "__main__":
     if '-Nint' in sys.argv:
         p = sys.argv.index('-Nint')
         Nint = int(sys.argv[p+1])
-    if '-upper' in sys.argv:
-        p = sys.argv.index('-upper')
+    if '-upperx' in sys.argv:
+        p = sys.argv.index('-upperx')
         utemp = float(sys.argv[p+1])
         if utemp > 0:
             b = utemp
-    if '-lower' in sys.argv:
-        p = sys.argv.index('-lower')
+    if '-lowerx' in sys.argv:
+        p = sys.argv.index('-lowerx')
         ltemp = int(sys.argv[p+1])
         if ltemp > 0:
             a = ltemp
+    if '-uppery' in sys.argv:
+        p = sys.argv.index('-uppery')
+        utemp = float(sys.argv[p+1])
+        if utemp > 0:
+            d = utemp
+    if '-lowery' in sys.argv:
+        p = sys.argv.index('-lowery')
+        ltemp = int(sys.argv[p+1])
+        if ltemp > 0:
+            c = ltemp
     
     # Define the function
-    def f(x):
-        return 4 * x * np.exp(-x)
+    def f(x, y):
+        return 5*x**3*y**2
     
     # plot of function for quick inspection
     x = np.linspace(a, b, 100)
-    plt.plot(x, f(x), color='red')
-    plt.title("Plot of Function 4xe^-x from x=1 to x=10")
+    y = np.linspace(c, d, 100)
+    plt.plot(f(x,y), color='red')
+    plt.title("Plot of Function 5x^3y^2 from x=1 to x=10")
     plt.xlabel('x')
     plt.ylabel('f(x)')
     plt.show()
     
     # generate required random numbers between the limits
-    rand_arr = []
+    x = []
+    y = []
     for i in range(Nint):
-        rand_arr.append(np.random.uniform(a,b))
+        x.append(np.random.uniform(a,b))
+        y.append(np.random.uniform(c,d))
         
     # compute summation
     summ = 0.0
-    for r in rand_arr:
-        summ += f(r)
+    for r in range(Nint):
+        summ += f(x[r],y[r])
         
     # compute the integration
-    ans = (b-a)/float(Nint) * summ
+    ans = (b-a)*(d-c)/float(Nint) * summ
     print("The integrated value using Monte Carlo Integration method is: ", ans)
-    actual_integral = 3.998002403090451
+    actual_integral = 4166666.6666666
     error = abs((actual_integral - ans)/actual_integral)
     print("The percent error versus the analytical integral is: ", error * 100, "%")
     
     
-    #additional plot of distribution of integrated areas
-    #plt.title("Distribution of areas calculated")
-    #plt.hist(plt_vals, bins=30, ec="black", color="lightblue")
-    #plt.xlabel("Areas")
-    #plt.show()
-    
-    
-    #Implement a Monte Carlo integration to a function in one or more dimensions. You are welcome to start with your code from HW #6 (but please copy to a new file, don't overwrite your HW #6 work)
-    
-    
-    
-    
-    # Quantify the accuracy of your MC integral as a function of the number of sample points and compare with the accuracy of your deterministic methods from HW #6
-    
-    
-    
-    
-    # Optional: Feel free to try to improve your accuracy/efficiency using importance sampling, stratification, or a change of variables - how much does this help?

@@ -1,5 +1,6 @@
 """
 Purpose: Homework #7 PHSX 815
+Attempt with 1 Dimensional Function
 University of Kansas
 
 author: @aelieber1  

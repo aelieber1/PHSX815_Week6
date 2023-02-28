@@ -104,4 +104,4 @@ if __name__ == "__main__":
     error = abs((actual_integral - ans)/actual_integral)
     print("The percent error versus the analytical integral is: ", error * 100, "%")
     
-    
+    print("As the number of sub intervals increases, the MC interval becomes more and more accurate (converging on truth), this can be tested by testing a variation of Nint values")
